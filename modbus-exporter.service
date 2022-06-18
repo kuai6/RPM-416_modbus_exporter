@@ -1,0 +1,19 @@
+[Unit]
+Description=Modbus Exporter
+Documentation=https://github.com/RichiH/modbus_exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nogroup
+ExecReload=/bin/kill -HUP \$MAINPID
+ExecStart=/usr/local/bin/modbus_exporter -config.file=/etc/modbus_exporter/modbus.yml
+
+
+SyslogIdentifier=modbus_exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
