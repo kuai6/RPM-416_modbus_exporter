@@ -1,0 +1,569 @@
+modules:
+  - name: "RPM-416"
+    protocol: 'tcp/ip'
+    metrics:
+      - name: device_status
+        help: "represents the device status, 2 bytes; use the manual to determinate bits of statuses"
+        address: 300008
+        dataType: uint32
+        metricType: gauge
+      - name: device_errors
+        help: "represents the device error codes, 2 bytes; use the manual to determinate bits of errors"
+        address: 300010
+        dataType: uint32
+        metricType: gauge
+      - name: sd_card_total_size
+        address: 300012
+        dataType: uint32
+        metricType: gauge
+        factor: 512
+      - name: sd_card_free_sapce
+        address: 300014
+        dataType: uint32
+        metricType: gauge
+        factor: 512
+      - name: sd_card_file_id
+        address: 300016
+        dataType: uint16
+        metricType: gauge
+      - name: sd_card_file_size
+        address: 300017
+        dataType: uint32
+        metricType: gauge
+      - name: uptime
+        help: "uptime in hours"
+        address: 300019
+        dataType: uint32
+        metricType: gauge
+      - name: system_timestamp
+        help: "seconds from 01.01.1980 / 00:00:00"
+        address: 300021
+        dataType: uint32
+        metricType: gauge
+# possible not implemented in my revision
+#      - name: last_event_timestamp
+#        help: "seconds from 01.01.1980 / 00:00:00"
+#        address: 300023
+#        dataType: uint32
+#        metricType: gauge
+#      - name: events_count_from_power_on
+#        address: 300025
+#        dataType: uint32
+#        metricType: gauge
+      # voltage phase 1
+      - name: voltage_rms
+        help: "RMS amplitude"
+        labels:
+          phase: "1"
+          channel: "1"
+        address: 300101
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: voltage_frequency
+        labels:
+          phase: "1"
+          channel: "1"
+        address: 300104
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: voltage_thd
+        help: "THD factor"
+        labels:
+          phase: "1"
+          channel: "1"
+        address: 300107
+        dataType: uint32
+        metricType: gauge
+        factor: 1
+      - name: voltage_positive_peak
+        labels:
+          phase: "1"
+          channel: "1"
+        address: 300110
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: voltage_negative_peak
+        labels:
+          phase: "1"
+          channel: "1"
+        address: 300113
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # voltage phase 2
+      - name: voltage_rms
+        help: "RMS amplitude"
+        labels:
+          phase: "2"
+          channel: "2"
+        address: 300119
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: voltage_frequency
+        labels:
+          phase: "2"
+          channel: "2"
+        address: 300122
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: voltage_thd
+        help: "THD factor"
+        labels:
+          phase: "2"
+          channel: "2"
+        address: 300125
+        dataType: uint32
+        metricType: gauge
+        factor: 1
+      - name: voltage_positive_peak
+        labels:
+          phase: "2"
+          channel: "2"
+        address: 300128
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: voltage_negative_peak
+        labels:
+          phase: "2"
+          channel: "2"
+        address: 300131
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # voltage phase 3
+      - name: voltage_rms
+        help: "RMS amplitude"
+        labels:
+          phase: "3"
+          channel: "3"
+        address: 300137
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: voltage_frequency
+        labels:
+          phase: "3"
+          channel: "3"
+        address: 300140
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: voltage_thd
+        help: "THD factor"
+        labels:
+          phase: "3"
+          channel: "3"
+        address: 300143
+        dataType: uint32
+        metricType: gauge
+        factor: 1
+      - name: voltage_positive_peak
+        labels:
+          phase: "3"
+          channel: "3"
+        address: 300146
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: voltage_negative_peak
+        labels:
+          phase: "3"
+          channel: "3"
+        address: 300149
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # current phase 1
+      - name: current_rms
+        help: "RMS current"
+        labels:
+          phase: "1"
+          channel: "4"
+        address: 300155
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: current_frequency
+        labels:
+          phase: "1"
+          channel: "4"
+        address: 300158
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: current_thd
+        help: "THD factor"
+        labels:
+          phase: "1"
+          channel: "4"
+        address: 300161
+        dataType: uint32
+        metricType: gauge
+        factor: 1
+      - name: current_positive_peak
+        labels:
+          phase: "1"
+          channel: "4"
+        address: 300164
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: current_negative_peak
+        labels:
+          phase: "1"
+          channel: "4"
+        address: 300167
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # current phase 2
+      - name: current_rms
+        help: "RMS current"
+        labels:
+          phase: "2"
+          channel: "5"
+        address: 300173
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: current_frequency
+        labels:
+          phase: "2"
+          channel: "5"
+        address: 300176
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: current_thd
+        help: "THD factor"
+        labels:
+          phase: "2"
+          channel: "5"
+        address: 300179
+        dataType: uint32
+        metricType: gauge
+        factor: 1
+      - name: current_positive_peak
+        labels:
+          phase: "2"
+          channel: "5"
+        address: 300182
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: current_negative_peak
+        labels:
+          phase: "2"
+          channel: "5"
+        address: 300185
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # current phase 3
+      - name: current_rms
+        help: "RMS current"
+        labels:
+          phase: "3"
+          channel: "6"
+        address: 300191
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: current_frequency
+        labels:
+          phase: "3"
+          channel: "6"
+        address: 300194
+        dataType: uint32
+        metricType: gauge
+        factor: 0.01
+      - name: current_thd
+        help: "THD factor"
+        labels:
+          phase: "3"
+          channel: "6"
+        address: 300197
+        dataType: uint32
+        metricType: gauge
+        factor: 1
+      - name: current_positive_peak
+        labels:
+          phase: "3"
+          channel: "6"
+        address: 300200
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: current_negative_peak
+        labels:
+          phase: "3"
+          channel: "6"
+        address: 300203
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # temperature
+      - name: temperature
+        labels:
+          phase: "channel 8"
+        address: 300227
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: temperature
+        labels:
+          phase: "channel 9"
+        address: 300245
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # analog inputs
+      - name: analog_voltage
+        labels:
+          type: "measured_value"
+          channel: "10"
+        help: "analog voltage 0-10V"
+        address: 300263
+        dataType: int32
+        metricType: gauge
+        factor: 0.01
+      - name: analog_voltage
+        labels:
+          type: "user_value"
+          channel: "10"
+        help: "analog voltage 0-10V"
+        address: 300266
+        dataType: int32
+        metricType: gauge
+        factor: 0.01
+
+      - name: analog_current
+        labels:
+          type: "measured_value"
+          channel: "11"
+        help: "analog current 0-20ma"
+        address: 300263
+        dataType: int32
+        metricType: gauge
+        factor: 0.01
+      - name: analog_current
+        labels:
+          type: "user_value"
+          channel: "11"
+        help: "analog current 0-20ma"
+        address: 300266
+        dataType: int32
+        metricType: gauge
+        factor: 0.01
+
+      # digital inputs
+      # todo
+
+      # power consumption
+      - name: power_apparent
+        labels:
+          phase: "1"
+          channel: "16"
+        address: 300371
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_active
+        labels:
+          phase: "1"
+          channel: "16"
+        address: 300374
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_reactive
+        labels:
+          phase: "1"
+          channel: "16"
+        address: 300377
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_factor
+        labels:
+          phase: "1"
+          channel: "16"
+        help: "the power factor (cosφ)"
+        address: 300380
+        dataType: int32
+        metricType: gauge
+        factor: 0.001
+      - name: power_active_meter
+        labels:
+          phase: "1"
+          channel: "16"
+        address: 300383
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: power_reactive_meter
+        labels:
+          phase: "1"
+          channel: "16"
+        address: 300386
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      - name: power_apparent
+        labels:
+          phase: "2"
+          channel: "17"
+        address: 300389
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_active
+        labels:
+          phase: "2"
+          channel: "17"
+        address: 300392
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_reactive
+        labels:
+          phase: "2"
+          channel: "17"
+        address: 300395
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_factor
+        labels:
+          phase: "2"
+          channel: "17"
+        help: "the power factor (cosφ)"
+        address: 300398
+        dataType: int32
+        metricType: gauge
+        factor: 0.001
+      - name: power_active_meter
+        labels:
+          phase: "2"
+          channel: "17"
+        address: 300401
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: power_reactive_meter
+        labels:
+          phase: "2"
+          channel: "17"
+        address: 300404
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      - name: power_apparent
+        labels:
+          phase: "3"
+          channel: "18"
+        address: 300407
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_active
+        labels:
+          phase: "3"
+          channel: "18"
+        address: 300410
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_reactive
+        labels:
+          phase: "3"
+          channel: "18"
+        address: 300413
+        dataType: uint32
+        metricType: gauge
+        factor: 0.1
+      - name: power_factor
+        labels:
+          phase: "3"
+          channel: "18"
+        help: "the power factor (cosφ)"
+        address: 300416
+        dataType: int32
+        metricType: gauge
+        factor: 0.001
+      - name: power_active_meter
+        labels:
+          phase: "3"
+          channel: "18"
+        address: 300419
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: power_reactive_meter
+        labels:
+          phase: "3"
+          channel: "18"
+        address: 300422
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
+      # 3-phase connection
+      - name: linear_volatge_ab
+        labels:
+          channel: "19"
+        address: 300425
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: linear_volatge_bc
+        labels:
+          channel: "19"
+        address: 300428
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: linear_volatge_ca
+        labels:
+          channel: "19"
+        address: 300431
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: sequence_backward
+        labels:
+          channel: "19"
+        address: 300434
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: sequence_forward
+        labels:
+          channel: "19"
+        address: 300437
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+      - name: sequence_zero
+        labels:
+          channel: "19"
+        address: 300440
+        dataType: int32
+        metricType: gauge
+        factor: 0.1
+
