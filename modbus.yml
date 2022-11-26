@@ -317,14 +317,14 @@ modules:
       # temperature
       - name: temperature
         labels:
-          phase: "channel 8"
+          channel: "8"
         address: 300227
         dataType: int32
         metricType: gauge
         factor: 0.1
       - name: temperature
         labels:
-          phase: "channel 9"
+          channel: "9"
         address: 300245
         dataType: int32
         metricType: gauge
